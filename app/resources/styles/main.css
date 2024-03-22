@@ -1,0 +1,9 @@
+header nav a {
+    color: white !important;
+    font-size: 18px !important;
+    text-transform: capitalize !important;
+}
+
+.container {
+    padding: 0 25px;
+}
