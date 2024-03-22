@@ -1,6 +1,7 @@
 <?php
 
-interface IRegisterController {
+interface IRegisterController
+{
     public static function store(): void;
 }
 class RegisterController implements IRegisterController
@@ -19,10 +20,17 @@ class RegisterController implements IRegisterController
      */
     public static function store(): void
     {
-        echo "<pre>";
-            print_r(validate($_POST['name']));
-        echo "</pre>";
+        if (request('post')) {
 
+            $vars = input([
+                'name' => 'string',
+                'email' => 'string',
+                'password' => 'string'
+            ]);
 
+            extract($vars);
+
+            print_r($vars);
+        }
     }
 }

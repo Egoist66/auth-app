@@ -1,7 +1,7 @@
 <?php
 
 
-function validate(string $data): string
+function sanitize(string $data): string
 {
     $data = htmlspecialchars($data);
     $data = strip_tags($data);

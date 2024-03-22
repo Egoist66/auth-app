@@ -15,5 +15,14 @@ class UsersTableMigration
             ) ENGINE=INNODB;
         ";
         Database::getDBInstance($db_options['pdo'])->exec($users_query);
+
+        
+    }
+
+    public final static function drop(): void {
+        global $db_options;
+
+        Database::getDBInstance($db_options['pdo'])->exec('DROP TABLE users');
+
     }
 }

@@ -4,7 +4,6 @@
 class Router
 {
 
-
     public final static function route(): void
     {
         global $routeMap;
