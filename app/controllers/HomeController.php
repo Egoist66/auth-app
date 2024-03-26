@@ -9,8 +9,9 @@ class HomeController implements IHomeController
 {
     public final static function index(): string
     {
-        Users::create();
-        
+
+        session_start();
+       
         return view(
             'layout->main.template',
             ["content" => "<h2>Home</h2>"]

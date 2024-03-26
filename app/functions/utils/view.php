@@ -1,6 +1,7 @@
 <?php
 
 
+
 /**
  * connects view parts as solid one
  *

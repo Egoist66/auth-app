@@ -1,10 +1,12 @@
+
+
 <h2 class="uk-text-center uk-margin-large-bottom">Login into account</h2>
 
 
 <form
     method="post"
     action="?page=login&action=store"
-    x-data="$store.register"
+    x-data="$store.auth"
     style="align-items: center"
     class="uk-flex uk-flex-column  uk-flex-center"
 >
@@ -13,7 +15,7 @@
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-            <input name="email" required placeholder="Enter your email" class="uk-input" type="email"
+            <input x-model="email" name="email" required placeholder="Enter your email" class="uk-input" type="email"
                    aria-label="Not clickable icon">
         </div>
     </div>
@@ -28,7 +30,8 @@
             </span>
             <input
                 x-bind:type="on ? 'password' : 'text'"
-                minlength="8"
+                x-model="password"
+                minlength="4"
                 name="password"
                 maxlength="12"
                 required
@@ -40,7 +43,7 @@
     </div>
 
     <div class="uk-margin">
-        <button class="uk-button uk-button-primary" type="submit">Register</button>
+        <button x-bind:disabled="!validateLoginFields()" class="uk-button uk-button-primary" type="submit">Log in</button>
     </div>
 
     <div class="uk-margin">
