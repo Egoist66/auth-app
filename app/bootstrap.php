@@ -1,5 +1,18 @@
 <?php
-session_start();
+
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+header("Content-Security-Policy: frame-ancestors 'none'");
+//header("Content-Security-Policy: default-src 'self'");
+header("X-Frame-Options: DENY");
+header("X-Content-Type-Options: nosniff");
+header("X-XSS-Protection: 1; mode=block");
+header("Referrer-Policy: no-referrer");
+header("Feature-Policy: sync-xhr 'none'");
+
+
 
 require_once __DIR__ . '/functions/utils/report-error.php';
 
