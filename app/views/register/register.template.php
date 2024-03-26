@@ -10,6 +10,7 @@
     class="uk-flex uk-flex-column  uk-flex-center"
 >
 
+    <?= csrf_field() ?>
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon:user"></span>

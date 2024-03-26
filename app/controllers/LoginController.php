@@ -8,6 +8,7 @@ class LoginController implements ILoginController
 {
     public final static function index(): string
     {
+       
         return view(
             'layout->main.template',
             ["content" => view('login->login.template')]
@@ -19,6 +20,7 @@ class LoginController implements ILoginController
      */
     public final static function store(): void
     {
+        validate_csrf();
         
         sessionRemove('register_error');
         sessionRemove('reg_error_message');
@@ -29,18 +31,22 @@ class LoginController implements ILoginController
                 'password' => 'string',
             ], ['email', 'password']);
 
-        $user = Login::store($data);
-        if($user) {
+            $user = Login::store($data);
+            if($user) {
+                
+                sessionRemove('error_login_msg');
+                sessionRemove('error_login');
+
+                $_SESSION['auth'] = true;
+                $_SESSION['user'] = $user[0];
             
-            $_SESSION['auth'] = true;
-            $_SESSION['user'] = $user[0];
-           
-            redirect(route('page', 'profile'));
-        }
-        else {
-            
-            redirect(route('page', 'login'));
-        }    
+                redirect(route('page', 'profile'));
+            }
+            else {
+                $_SESSION['error_login'] = true;
+                $_SESSION['error_login_msg'] = 'Wrong email or password';
+                redirect(route('page', 'login'));
+            }    
 
         }
     }

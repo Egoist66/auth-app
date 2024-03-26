@@ -11,7 +11,7 @@
     class="uk-flex uk-flex-column  uk-flex-center"
 >
 
-
+        <?= csrf_field() ?>
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
@@ -45,6 +45,15 @@
     <div class="uk-margin">
         <button x-bind:disabled="!validateLoginFields()" class="uk-button uk-button-primary" type="submit">Log in</button>
     </div>
+
+    <?php if (sessionHas('error_login')): ?>
+
+        <div class="uk-alert-danger" uk-alert>
+            <a style="right: 6px !important; top: 21px !important" class="uk-alert-close uk-display-inline-block" uk-close></a>
+            <p><?= session('error_login_msg') ?></p>
+        </div>
+
+    <?php endif; ?>
 
     <div class="uk-margin">
         <p>Do not have an account? Go to <a href="<?= route('page', 'register') ?>">Register</a></p>

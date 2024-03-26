@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "csrf" => require_once __DIR__ . '/utils/csrf.php',
     "input" => require_once __DIR__ . '/utils/input.php',
     "route" => require_once __DIR__ . '/utils/route.php',
     "view" => require_once __DIR__ . '/utils/view.php',

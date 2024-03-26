@@ -18,6 +18,9 @@ class Router
                 break;
 
             case 'register':
+                if(isset($_SESSION['auth'])) {
+                    redirect(route('page', 'home'));
+                }
                 if ($action) {
                     switch ($action) {
                         case 'store':
@@ -29,6 +32,9 @@ class Router
                 break;
 
             case 'login':
+                if(isset($_SESSION['auth'])) {
+                    redirect(route('page', 'home'));
+                }
                 if ($action) {
                     switch ($action) {
                         case 'store':

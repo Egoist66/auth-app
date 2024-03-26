@@ -8,6 +8,7 @@ class RegisterController implements IRegisterController
 {
     public final static function index(): string
     {
+       
         return view(
             'layout->main.template',
             ["content" => view('register->register.template')]
@@ -21,6 +22,7 @@ class RegisterController implements IRegisterController
     {
         if (request('post')) {
 
+            validate_csrf();
             $data = input([
                 'name' => 'string',
                 'email' => 'string',
