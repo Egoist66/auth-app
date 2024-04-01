@@ -5,7 +5,7 @@ class Users
     use DropUsersTable;
     use PDOConn;
 
-    public final static function store(array $data): array
+    final public static function store(array $data): array
     {
 
         $pdo = self::getPDOInstance();
@@ -26,17 +26,34 @@ class Users
         }
 
 
+    }
+
+    final public static function getUser(string $email): mixed
+    {
+        try {
+            $user = self::getPDOInstance()->query(
+                "SELECT * FROM users WHERE email = ?",
+                [$email]
+
+            );
+
+
+            return $user;
+        } catch (Exception $e) {
+            $e->getMessage();
+            return false;
+        }
 
     }
 
-    public final static function update(): void
+    final public static function update(): void
     {
-        
+
     }
 
-    public final static function drop(): void
+    final public static function drop(): void
     {
-        UsersTableMigration::drop();
+        self::_drop();
     }
 
 

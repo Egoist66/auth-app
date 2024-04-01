@@ -4,7 +4,7 @@
 class Router
 {
 
-    public final static function route(): void
+    final public static function route(): void
     {
         global $routeMap;
 
@@ -18,7 +18,7 @@ class Router
                 break;
 
             case 'register':
-                if(isset($_SESSION['auth'])) {
+                if (sessionHas('auth')) {
                     redirect(route('page', 'home'));
                 }
                 if ($action) {
@@ -32,7 +32,7 @@ class Router
                 break;
 
             case 'login':
-                if(isset($_SESSION['auth'])) {
+                if (sessionHas('auth')) {
                     redirect(route('page', 'home'));
                 }
                 if ($action) {
@@ -46,8 +46,8 @@ class Router
                 break;
 
             case 'profile':
-                
-               
+
+
                 if ($action) {
                     switch ($action) {
                         case 'logout':
@@ -55,7 +55,7 @@ class Router
                             break;
                     }
                 }
-               
+
                 echo $routeMap['index']['profile'];
                 break;
 

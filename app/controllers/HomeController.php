@@ -1,20 +1,17 @@
 <?php
 
-interface IHomeController
-{
-    public static function index(): string;
-}
 
-class HomeController implements IHomeController
+
+class HomeController extends Controller
 {
-    public final static function index(): string
+    final public static function index(mixed $data = null): string
     {
 
         session_start();
        
         return view(
             'layout->main.template',
-            ["content" => "<h2>Home</h2>"]
+            ["content" => "<h1>Home</h1>"]
         );
     }
 }

@@ -1,5 +1,3 @@
-
-
 <h2 class="uk-text-center uk-margin-large-bottom">Login into account</h2>
 
 
@@ -11,7 +9,7 @@
     class="uk-flex uk-flex-column  uk-flex-center"
 >
 
-        <?= csrf_field() ?>
+    <?= csrf_field() ?>
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
@@ -43,13 +41,15 @@
     </div>
 
     <div class="uk-margin">
-        <button x-bind:disabled="!validateLoginFields()" class="uk-button uk-button-primary" type="submit">Log in</button>
+        <button x-bind:disabled="!validateLoginFields()" class="uk-button uk-button-primary" type="submit">Log in
+        </button>
     </div>
 
     <?php if (sessionHas('error_login')): ?>
 
         <div class="uk-alert-danger" uk-alert>
-            <a style="right: 6px !important; top: 21px !important" class="uk-alert-close uk-display-inline-block" uk-close></a>
+            <a style="right: 6px !important; top: 21px !important" class="uk-alert-close uk-display-inline-block"
+               uk-close></a>
             <p><?= session('error_login_msg') ?></p>
         </div>
 

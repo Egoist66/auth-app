@@ -1,19 +1,17 @@
 <?php
 
-interface IProfileController {
-    public static function store(): void;
-}
-class ProfileController implements IProfileController 
+
+class ProfileController extends Controller
 
 {
-    public final static function index(): string
+    final public static function index(mixed $data = null): string
     {
-        if(!isset($_SESSION['auth'])) {
-            return  view('errors->errors.template', ["content" => "You are not authorized!"]);
-            
+        if (!isset($_SESSION['auth'])) {
+            return view('errors->errors.template', ["content" => "You are not authorized!"]);
+
         }
 
-       
+
         return view(
             'layout->main.template',
             ["content" => view('profile->profile.template', ['user' => $_SESSION['user']])]
@@ -25,7 +23,7 @@ class ProfileController implements IProfileController
      */
     public static function store(): void
     {
-      
+
     }
 }
 

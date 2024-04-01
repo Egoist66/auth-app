@@ -1,14 +1,11 @@
 <?php
 
-interface IErrorController
-{
-    public static function index(mixed $data = null): string;
-}
 
-class ErrorController implements IErrorController
+
+class ErrorController extends Controller
 {
    
-    static public final function index(mixed $data = null): string {
+    final public static function index(mixed $data = null): string {
         session_start();
         return view('errors->errors.template', ["content" => $data]);
     }

@@ -1,7 +1,6 @@
 <?php
 
 
-
 /**
  * connects view parts as solid one
  *
@@ -16,12 +15,12 @@ function view(string $viewFile, array $data = []): false|string
         [$folder, $file] = explode('->', $viewFile);
 
         if (!is_dir("." . VIEWS . "/$folder")) {
-            throw new Exception("Such folder not found: $folder");
+            throw new \RuntimeException("Such folder not found: $folder");
         }
 
 
         if (!file_exists("." . VIEWS . "/$folder/$file.php")) {
-            throw new Exception("View file not found: $file");
+            throw new \RuntimeException("Such view file not found: $file");
         }
 
 
@@ -32,7 +31,7 @@ function view(string $viewFile, array $data = []): false|string
         ob_start();
 
 
-        include "./app/views/$folder/$file.php";
+        require "./app/views/$folder/$file.php";
 
 
         // Получаем содержимое буфера вывода

@@ -1,14 +1,11 @@
 <?php
 
-interface IRegisterController
+
+class RegisterController extends Controller
 {
-    public static function store(): void;
-}
-class RegisterController implements IRegisterController
-{
-    public final static function index(): string
+    final public static function index(mixed $data = null): string
     {
-       
+
         return view(
             'layout->main.template',
             ["content" => view('register->register.template')]
@@ -18,7 +15,7 @@ class RegisterController implements IRegisterController
     /**
      * @return void
      */
-    public  static function store(): void
+    public static function store(): void
     {
         if (request('post')) {
 
@@ -30,15 +27,14 @@ class RegisterController implements IRegisterController
             ], ['name', 'email', 'password']);
 
 
-    
             $response = Register::store($data);
-            
-            if(!$response['created']){
+
+            if (!$response['created']) {
 
                 sessionSet('register_error', $response['created']);
                 sessionSet('reg_error_message', 'Something went wrong! Data is ununquie or does not fit to the according format');
-             
-                redirect(route('page', 'register')); 
+
+                redirect(route('page', 'register'));
                 return;
             }
 
@@ -48,8 +44,7 @@ class RegisterController implements IRegisterController
                 sessionRemove('register_error');
                 sessionRemove('reg_error_message');
                 redirect(route('page', 'login'));
-            } 
-          
+            }
 
 
         }

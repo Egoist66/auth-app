@@ -1,7 +1,7 @@
 <?php
 
 trait DropUsersTable {
-    public static function drop(): void
+    public static function _drop(): void
     {
         UsersTableMigration::drop();
     }

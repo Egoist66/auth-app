@@ -1,11 +1,9 @@
 <?php
 
-interface IPage404Controller {
-    public static function index(): string;
-}
-class Page404Controller implements IPage404Controller
+
+class Page404Controller extends Controller
 {
-    public final static function index(): string
+    final public static function index(mixed $data = null): string
     {
        
         return view(

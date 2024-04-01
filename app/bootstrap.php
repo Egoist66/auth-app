@@ -1,6 +1,6 @@
 <?php
 
-if(session_status() == PHP_SESSION_NONE) {
+if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -30,6 +30,7 @@ require_once __DIR__ . '/migrations/UsersTableMigration.php';
 require_once __DIR__ . '/models/Users/Users.php';
 require_once __DIR__ . '/models/Auth/Login.php';
 require_once __DIR__ . '/models/Auth/Register.php';
+require_once __DIR__ . '/controllers/Controller.php';
 require_once __DIR__ . '/controllers/HomeController.php';
 require_once __DIR__ . '/controllers/ProfileController.php';
 require_once __DIR__ . '/controllers/LoginController.php';
