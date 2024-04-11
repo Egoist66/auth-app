@@ -29,6 +29,9 @@ class LoginController extends Controller
             ], ['email', 'password']);
 
             $user = Login::store($data);
+
+
+            
             if ($user) {
 
                 sessionRemove('error_login_msg');
@@ -51,8 +54,7 @@ class LoginController extends Controller
     {
 
 
-        sessionClear();
-
+        sessionRemove('auth');
         redirect(route('page', 'login'));
     }
 }

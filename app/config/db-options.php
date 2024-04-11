@@ -12,6 +12,13 @@ try {
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]
         ),
+
+        "mysql" => [
+            "host" => DB_HOST,
+            "dbname" => DB_NAME,
+            "username" => DB_USERNAME,
+            "password" => DB_PASSWORD,
+        ],
     ];
 
     return $db_options;

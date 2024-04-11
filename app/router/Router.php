@@ -18,9 +18,11 @@ class Router
                 break;
 
             case 'register':
+
                 if (sessionHas('auth')) {
                     redirect(route('page', 'home'));
                 }
+                
                 if ($action) {
                     switch ($action) {
                         case 'store':

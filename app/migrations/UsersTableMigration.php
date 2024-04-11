@@ -5,7 +5,7 @@ class UsersTableMigration
 {
     use PDOConn;
 
-    public final static function migrate(): void
+    public final static function up(): void
     {
 
         $users_query = "
@@ -29,4 +29,4 @@ class UsersTableMigration
     }
 }
 
-UsersTableMigration::migrate();
+UsersTableMigration::up();
