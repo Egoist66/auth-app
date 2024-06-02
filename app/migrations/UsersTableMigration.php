@@ -5,7 +5,7 @@ class UsersTableMigration
 {
     use PDOConn;
 
-    public final static function up(): void
+    final public static function up(): void
     {
 
         $users_query = "
@@ -21,7 +21,7 @@ class UsersTableMigration
 
     }
 
-    public final static function drop(): void
+    final public static function drop(): void
     {
 
         self::getPDOInstance()->exec('DROP TABLE IF EXISTS users');

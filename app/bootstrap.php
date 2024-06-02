@@ -13,7 +13,7 @@ header("Referrer-Policy: no-referrer");
 header("Feature-Policy: sync-xhr 'none'");
 
 
-foreach (require_once __DIR__ . '/modules/modules.php' as $module) {
+foreach (require __DIR__ . '/modules/modules.php' as $module) {
     require_once __DIR__ . $module;
 }
 

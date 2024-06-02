@@ -36,7 +36,7 @@ class MySQLDatabase implements IDatabase
     }
 
 
-    public final function execute(string $sql, array $prepared_params): bool|PDOStatement
+    final public function execute(string $sql, array $prepared_params): bool|PDOStatement
     {
         try {
 
@@ -46,7 +46,7 @@ class MySQLDatabase implements IDatabase
         }
     }
 
-    public final function query(string $sql, array $prepared_params): array
+    final public function query(string $sql, array $prepared_params): array
     {
         try {
             $stm = $this->getConn()->prepare($sql);
@@ -59,7 +59,7 @@ class MySQLDatabase implements IDatabase
         }
 
     }
-    public final function existsKeyInColumn(string $column, string $table): bool
+    final public function existsKeyInColumn(string $column, string $table): bool
     {
         $query = "SELECT COUNT(*) FROM $table WHERE $column = ?";
     
@@ -84,7 +84,7 @@ class MySQLDatabase implements IDatabase
      * @param string $sql
      * @return mixed
      */
-    public final function exec(string $sql): void
+    final public function exec(string $sql): void
     {
         try {
             $this->getConn()->exec($sql);
